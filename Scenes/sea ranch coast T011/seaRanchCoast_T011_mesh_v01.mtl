@@ -1,0 +1,12 @@
+# Blender 3.6.1 MTL File: 'seaRanch_T011_aiMesh.blend'
+# www.blender.org
+
+newmtl texproj
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd E:/Render/sea ranch/seaRanchCoast_T011_8k_ACEScg_v01/seaRanchCoast_T011_8k_ACEScg_v01_00086400.exr
+map_Ke E:/Render/sea ranch/seaRanchCoast_T011_8k_ACEScg_v01/seaRanchCoast_T011_8k_ACEScg_v01_00086400.exr
