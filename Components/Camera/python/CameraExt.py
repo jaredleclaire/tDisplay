@@ -1,4 +1,4 @@
-class CamVP:
+class Camera:
     """
     TDVPCamInner description
     """
