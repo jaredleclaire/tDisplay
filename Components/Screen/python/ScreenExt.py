@@ -44,7 +44,6 @@ class Screen:
 	def DebugOverlay(self, v):
 		
 		op('base_debugOverlay').par.Enable = v
-		print(v)
 		
 		#debug(v)
 		
@@ -53,3 +52,74 @@ class Screen:
 		op('level_markerOpacity').par.opacity = v
 		
 		#debug(v)
+  
+	def BoundingBox(self, v):
+
+		op('null_boundsPoint0').display = v
+		op('null_boundsPoint1').display = v
+		op('null_boundsPoint2').display = v
+		op('null_boundsPoint3').display = v
+		op('null_boundsPoint4').display = v
+		op('null_boundsPoint5').display = v
+		op('null_boundsPoint6').display = v
+		op('null_boundsPoint7').display = v
+
+		op('null_boundingBox').display = v
+
+		#debug(v)
+  
+	def UpdateProjMatrix(self):
+
+		m = tdu.Matrix()
+
+		# default projection matrix parameters
+		cam = op('cam_outer')
+		render = op('render_outerPerspective')
+		fovX = cam.par.fov
+		aspectX = render.par.resolutionw
+		aspectY = render.par.resolutionh
+		near = cam.par.near
+		far = cam.par.far
+		
+		# crop values
+		cropLeft = op('null_crop')['left']
+		cropRight = op('null_crop')['right']
+		cropBottom =op('null_crop')['bottom']
+		cropTop = op('null_crop')['top']
+		
+		# re-scale factor calc
+		scaleX = 1 / (cropRight - cropLeft)
+		scaleY = 1 / (cropTop - cropBottom)
+		
+		# convert original matrix to projection matrix with default pars
+		m.projectionFovX(fovX, aspectX, aspectY, near, far)
+		
+		# crop to bounding box
+			
+		m.scale(0.5,0.5,1.0)
+			
+		m.translate(0.5,0.5,0.0)
+			
+		m.translate((cropLeft * -1),(cropBottom * -1),0)
+			
+		m.scale( scaleX , scaleY, 1 )
+			
+		m.translate(-0.5,-0.5,0.0)
+			
+		m.scale(2.0,2.0,1.0)
+			
+		m.fillTable(op('table_projMat'))
+		
+		#debug(v)
+		
+	def SetColor(self, r, g, b, a):
+		
+		#work in progress
+		
+		num = parent.Screen.digits
+		
+		r = op.Colors.par.Color
+		
+		print(row)
+
+		#debug()
