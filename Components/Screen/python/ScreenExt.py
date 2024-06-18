@@ -146,3 +146,15 @@ class Screen:
 	def HideFrustum(self):
 		op('FrustumVisualizer').display = False
 		print(str(parent.Screen.name) + ' frustum disabled')
+		
+	def SetScreenspacePriority(self, state):
+		if state == 'middle':
+			op('select_layer1').par.top = 'out_inner'
+			op('select_layer2').par.top = 'out_canvas'
+			op('select_layer3').par.top = 'out_outer'
+		elif state == 'top':
+			op('select_layer1').par.top = 'out_canvas'
+			op('select_layer2').par.top = 'out_inner'
+			op('select_layer3').par.top = 'out_outer'
+		else:
+			pass
