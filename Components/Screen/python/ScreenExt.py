@@ -112,14 +112,37 @@ class Screen:
 		
 		#debug(v)
 		
-	def SetColor(self, r, g, b, a):
+	def SetDefaultColor(self):
 		
 		#work in progress
 		
-		num = parent.Screen.digits
+		num = parent.Screen.digits % 10
+		print(num)
+	
+		r = eval('op.Colors.par.Color' + str(num) + 'r')
+		g = eval('op.Colors.par.Color' + str(num) + 'g')
+		b = eval('op.Colors.par.Color' + str(num) + 'b')
+		a = eval('op.Colors.par.Color' + str(num) + 'a')
 		
-		r = op.Colors.par.Color
-		
-		print(row)
+		parent.Screen.par.Screencolorr = r
+		parent.Screen.par.Screencolorg = g
+		parent.Screen.par.Screencolorb = b
+		parent.Screen.par.Screenalpha = a
 
 		#debug()
+	
+	def ShowWireframe(self):
+		op('geo_wireframe').render = True
+		print(str(parent.Screen.name) + ' wireframe enabled')
+		
+	def HideWireframe(self):
+		op('geo_wireframe').render = False
+		print(str(parent.Screen.name) + ' wireframe disabled')
+		
+	def ShowFrustum(self):
+		op('FrustumVisualizer').display = True
+		print(str(parent.Screen.name) + ' frustum enabled')
+		
+	def HideFrustum(self):
+		op('FrustumVisualizer').display = False
+		print(str(parent.Screen.name) + ' frustum disabled')

@@ -7,14 +7,19 @@
 
 def onValueChange(par, prev):
 	# use par.eval() to get current value
-	if par.name == 'Liftlevel':
-		parent.lgg.parGroup.Liftcolor = par.eval()
-	if par.name == 'Gammalevel':
-		parent.lgg.parGroup.Gammacolor = par.eval()
-	if par.name == 'Gainlevel':
-		parent.lgg.parGroup.Offsetcolor = par.eval()
-	if par.name == 'Offsetlevel':
-		parent.lgg.parGroup.Offsetcolor = par.eval()
+	
+	if par.name == 'Wireframe':
+		if par.eval() == True:
+			parent.Screen.ShowWireframe()
+		elif par.eval() == False:
+			parent.Screen.HideWireframe()
+	elif par.name == 'Frustum':
+		if par.eval() == True:
+			parent.Screen.ShowFrustum()
+		elif par.eval() == False:
+			parent.Screen.HideFrustum()
+	else:
+		pass
 	
 	return
 
@@ -28,9 +33,6 @@ def onValuesChanged(changes):
 	return
 
 def onPulse(par):
-	
-	me.parent().Reset()
-	
 	return
 
 def onExpressionChange(par, val, prev):

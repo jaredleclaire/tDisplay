@@ -38,8 +38,22 @@ class Volume:
 		
 		# self.stored = StorageManager(self, ownerComp, storedItems)
 
-	def myFunction(self, v):
-		debug(v)
-
-	def PromotedFunction(self, v):
-		debug(v)
+	def ShowWireframe(self):
+		children = me.parent().findChildren(name='Screen*',depth=1)
+		for c in children:
+			c.ShowWireframe()
+			
+	def HideWireframe(self):
+		children = me.parent().findChildren(name='Screen*',depth=1)
+		for c in children:
+			c.HideWireframe()
+			
+	def ShowFrustum(self):
+		children = me.parent().findChildren(name='Screen*',depth=1)
+		for c in children:
+			c.ShowFrustum()
+			
+	def HideFrustum(self):
+		children = me.parent().findChildren(name='Screen*',depth=1)
+		for c in children:
+			c.HideFrustum()

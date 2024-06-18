@@ -72,6 +72,7 @@ class Camera:
     	print('all camera helpers disabled')
     	
     def FOVtoThrow(self, fov):
+    	#incomplete
     	import math
     	
     	distance = parent.Camera.par.Focaldepth
@@ -82,8 +83,11 @@ class Camera:
     	hypot = ( distance / math.sin( angle ) * 2 )
     	print('hypot = ' + str(hypot))
     	
-    	#throw = distance / width
-    	#print('throw = ' + str(throw))
+    	width = math.sqrt( pow(hypot,2) - pow(distance,2) ) * 2
+    	print('width = ' + str(width))
+    	
+    	throw = distance / width
+    	print('throw = ' + str(throw))
     	
     	return throw
     
