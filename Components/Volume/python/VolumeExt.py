@@ -57,3 +57,7 @@ class Volume:
 		children = me.parent().findChildren(name='Screen*',depth=1)
 		for c in children:
 			c.HideFrustum()
+	
+	def Reinit(self):
+		op('base_recreateScreens').par.Recreateallscreens.pulse()
+		print('volume re-initialized')

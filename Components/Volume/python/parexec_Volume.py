@@ -28,6 +28,12 @@ def onValuesChanged(changes):
 	return
 
 def onPulse(par):
+	
+	if par.name == 'Reinit':
+		op.Volume.Reinit()
+	else:
+		pass
+	
 	return
 
 def onExpressionChange(par, val, prev):
