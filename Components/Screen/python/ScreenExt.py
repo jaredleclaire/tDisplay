@@ -114,8 +114,6 @@ class Screen:
 		
 	def SetDefaultColor(self):
 		
-		#work in progress
-		
 		num = parent.Screen.digits % 10
 		print(num)
 	
@@ -128,6 +126,8 @@ class Screen:
 		parent.Screen.par.Screencolorg = g
 		parent.Screen.par.Screencolorb = b
 		parent.Screen.par.Screenalpha = a
+		
+		parent.Screen.color = (r,g,b)
 
 		#debug()
 	
