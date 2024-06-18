@@ -18,6 +18,10 @@ def onValueChange(par, prev):
 			parent.Screen.ShowFrustum()
 		elif par.eval() == False:
 			parent.Screen.HideFrustum()
+	elif par.name == 'Screenspaceopacity':
+		parent.Screen.SetScreenspaceOpacity(par.eval())
+	elif par.name == 'Screenspacepriority':
+		parent.Screen.SetScreenspacePriority(par.eval())
 	else:
 		pass
 	

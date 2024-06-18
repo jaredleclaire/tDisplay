@@ -61,3 +61,16 @@ class Volume:
 	def Reinit(self):
 		op('base_recreateScreens').par.Recreateallscreens.pulse()
 		print('volume re-initialized')
+		
+	def SetScreenspacePriority(self, mode):
+		children = me.parent().findChildren(name='Screen*',depth=1)
+		for c in children:
+			c.SetScreenspacePriority(mode)
+			c.par.Screenspacepriority = mode
+			print(c.name + ' screenspace priority set to ' + mode)
+			
+	def SetScreenspaceOpacity(self, opacity):
+		children = me.parent().findChildren(name='Screen*',depth=1)
+		for c in children:
+			c.SetScreenspaceOpacity(opacity)
+

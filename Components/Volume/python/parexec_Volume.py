@@ -15,6 +15,12 @@ def onValueChange(par, prev):
 		children = me.parent().findChildren(name='Screen*',depth=1)
 		for c in children:
 			c.par.Trackingmarkers = par.eval()
+	elif par.name == 'Screenspaceopacity':
+		parent.Volume.SetScreenspaceOpacity(par.eval())
+	elif par.name == 'Screenspacepriority':
+		parent.Volume.SetScreenspacePriority(par.eval())
+	else:
+		pass
 
 	return
 
