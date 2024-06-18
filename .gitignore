@@ -1,3 +1,4 @@
 tDisplay.*.toe
 *.exr
 *.mov
+.DS_Store
