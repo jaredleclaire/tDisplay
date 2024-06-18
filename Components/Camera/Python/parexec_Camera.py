@@ -9,11 +9,11 @@
 def onValueChange(par, prev):
     # use par.eval() to get current value
     if par.name == 'Showlabel':
-        parent.Camera.ShowLabel() if par else parent.TDVPInnerCamRoot.HideLabel()
+        parent.Camera.ShowLabel() if par else parent.Camera.HideLabel()
     elif par.name == 'Showborder':
-        parent.Camera.ShowBorder() if par else parent.TDVPInnerCamRoot.HideBorder()
+        parent.Camera.ShowBorder() if par else parent.Camera.HideBorder()
     elif par.name == 'Showkeyingscreen':
-        parent.Camera.ShowKeyingScreen() if par else parent.TDVPInnerCamRoot.HideKeyingScreen()
+        parent.Camera.ShowKeyingScreen() if par else parent.Camera.HideKeyingScreen()
     elif par.name == 'Depthoffield':
     	if par.eval() == False:
     		parent.Camera.DisableDoF()
