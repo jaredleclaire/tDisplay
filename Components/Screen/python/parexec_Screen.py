@@ -10,14 +10,14 @@ def onValueChange(par, prev):
 	
 	if par.name == 'Wireframe':
 		if par.eval() == True:
-			parent.Screen.ShowWireframe()
+			parent.Screen.Wireframe(True)
 		elif par.eval() == False:
-			parent.Screen.HideWireframe()
+			parent.Screen.Wireframe(False)
 	elif par.name == 'Frustum':
 		if par.eval() == True:
-			parent.Screen.ShowFrustum()
+			parent.Screen.Frustum(True)
 		elif par.eval() == False:
-			parent.Screen.HideFrustum()
+			parent.Screen.Frustum(False)
 	elif par.name == 'Screenspaceopacity':
 		parent.Screen.SetScreenspaceOpacity(par.eval())
 	elif par.name == 'Screenspacepriority':

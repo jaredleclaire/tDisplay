@@ -7,14 +7,25 @@
 
 def onValueChange(par, prev):
 	# use par.eval() to get current value
+	# helpers
 	if par.name == 'Debugoverlays':
-		children = me.parent().findChildren(name='Screen*',depth=1)
+		children = parent.Volume.findChildren(name='Screen*',depth=1)
 		for c in children:
 			c.par.Debugoverlay = par.eval()
 	elif par.name == 'Trackingmarkers':
-		children = me.parent().findChildren(name='Screen*',depth=1)
+		children = parent.Volume.findChildren(name='Screen*',depth=1)
 		for c in children:
 			c.par.Trackingmarkers = par.eval()
+		parent.Volume.par.Trackingmarkers = par.eval()
+	elif par.name == 'Wireframe':
+		children = parent.Volume.findChildren(name='Screen*',depth=1)
+		for c in children:
+			c.par.Wireframe = par.eval()
+	elif par.name == 'Frustums':
+		children = parent.Volume.findChildren(name='Screen*',depth=1)
+		for c in children:
+			c.par.Frustum = par.eval()
+	# screen space
 	elif par.name == 'Screenspaceopacity':
 		parent.Volume.SetScreenspaceOpacity(par.eval())
 	elif par.name == 'Screenspacepriority':

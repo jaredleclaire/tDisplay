@@ -8,27 +8,19 @@
 
 def onValueChange(par, prev):
     # use par.eval() to get current value
-    if par.name == 'Showlabel':
-        parent.Camera.ShowLabel() if par else parent.Camera.HideLabel()
-    elif par.name == 'Showborder':
-        parent.Camera.ShowBorder() if par else parent.Camera.HideBorder()
-    elif par.name == 'Showkeyingscreen':
-        parent.Camera.ShowKeyingScreen() if par else parent.Camera.HideKeyingScreen()
+    if par.name == 'Label':
+        parent.Camera.Label(par.eval())
+    elif par.name == 'Border':
+        parent.Camera.Border(par.eval())
+    elif par.name == 'Keyingscreen':
+        parent.Camera.KeyingScreen(par.eval())
     elif par.name == 'Depthoffield':
     	if par.eval() == False:
     		parent.Camera.DisableDoF()
     	elif par.eval() == True:
     		parent.Camera.EnableDoF()
-    elif par.name == 'Showfrustum':
-    	if par.eval() == False:
-    		parent.Camera.HideFrustum()
-    	elif par.eval() == True:
-    		parent.Camera.ShowFrustum()
-    elif par.name == 'Showall':
-    	if par.eval() == False:
-    		parent.Camera.HideAll()
-    	elif par.eval() == True:
-    		parent.Camera.ShowAll()
+    elif par.name == 'Frustum':
+    	parent.Camera.Frustum(par.eval())
     	
     return
 

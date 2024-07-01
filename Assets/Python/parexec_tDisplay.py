@@ -16,8 +16,11 @@ def onValueChange(par, prev):
 	if par.name == 'Globalintensity':
 		me.parent().par.Cameraintensity = par
 		me.parent().par.Environmentintensity = par
+	if par.name == 'Trackingmarkers':
+		op.Volume.TrackingMarkers(par)
 	else:
 		pass
+
 	return
 
 # Called at end of frame with complete list of individual parameter changes.

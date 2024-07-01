@@ -41,32 +41,32 @@ class Screen:
 	def myFunction(self, v):
 		debug(v)
 
-	def DebugOverlay(self, v):
+	def DebugOverlay(self, state):
 		
-		op('base_debugOverlay').par.Enable = v
+		op('base_debugOverlay').par.Enable = state
 		
-		#debug(v)
+		#debug(state)
 		
-	def TrackingMarkers(self, v):
+	def TrackingMarkers(self, state ):
 		
-		op('level_markerOpacity').par.opacity = v
+		op('level_markerOpacity').par.opacity = state
 		
-		#debug(v)
+		#debug(state)
   
-	def BoundingBox(self, v):
+	def BoundingBox(self, state):
 
-		op('null_boundsPoint0').display = v
-		op('null_boundsPoint1').display = v
-		op('null_boundsPoint2').display = v
-		op('null_boundsPoint3').display = v
-		op('null_boundsPoint4').display = v
-		op('null_boundsPoint5').display = v
-		op('null_boundsPoint6').display = v
-		op('null_boundsPoint7').display = v
+		op('null_boundsPoint0').display = state
+		op('null_boundsPoint1').display = state
+		op('null_boundsPoint2').display = state
+		op('null_boundsPoint3').display = state
+		op('null_boundsPoint4').display = state
+		op('null_boundsPoint5').display = state
+		op('null_boundsPoint6').display = state
+		op('null_boundsPoint7').display = state
 
-		op('null_boundingBox').display = v
+		op('null_boundingBox').display = state
 
-		#debug(v)
+		#debug(state)
   
 	def UpdateProjMatrix(self):
 
@@ -131,21 +131,24 @@ class Screen:
 
 		#debug()
 	
-	def ShowWireframe(self):
-		op('geo_wireframe').render = True
-		print(str(parent.Screen.name) + ' wireframe enabled')
+	def Wireframe(self, state):
+		op('geo_wireframe').render = state
 		
-	def HideWireframe(self):
-		op('geo_wireframe').render = False
-		print(str(parent.Screen.name) + ' wireframe disabled')
+		if state == True:
+			print(parent.Screen.name + ' wireframe enabled')
+		elif state == False:
+			print(parent.Screen.name + ' wireframe disabled')
+		else:
+			pass
 		
-	def ShowFrustum(self):
-		op('FrustumVisualizer').display = True
-		print(str(parent.Screen.name) + ' frustum enabled')
-		
-	def HideFrustum(self):
-		op('FrustumVisualizer').display = False
-		print(str(parent.Screen.name) + ' frustum disabled')
+	def Frustum(self, state):
+		op('FrustumVisualizer').display = state
+		if state == True:
+			print(parent.Screen.name + ' frustum enabled')
+		elif state == False:
+			print(parent.Screen.name + ' frustum disabled')
+		else:
+			pass
 		
 	def SetScreenspacePriority(self, mode):
 		if mode == 'middle':
