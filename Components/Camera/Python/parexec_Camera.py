@@ -15,13 +15,13 @@ def onValueChange(par, prev):
     elif par.name == 'Keyingscreen':
         parent.Camera.KeyingScreen(par.eval())
     elif par.name == 'Depthoffield':
-    	if par.eval() == False:
-    		parent.Camera.DisableDoF()
-    	elif par.eval() == True:
-    		parent.Camera.EnableDoF()
+        if par.eval() == False:
+            parent.Camera.DisableDoF()
+        else:
+            parent.Camera.EnableDoF()
     elif par.name == 'Frustum':
-    	parent.Camera.Frustum(par.eval())
-    	
+        parent.Camera.Frustum(par.eval())
+
     return
 
 

@@ -10,14 +10,18 @@ def onValueChange(par, prev):
 	if par.name == 'Globaltemperature':
 		me.parent().par.Cameratemperature = par
 		me.parent().par.Environmenttemperature = par
-	if par.name == 'Globalmagenta':
+	elif par.name == 'Globalmagenta':
 		me.parent().par.Cameramagenta = par
 		me.parent().par.Environmentmagenta = par
-	if par.name == 'Globalintensity':
+	elif par.name == 'Globalintensity':
 		me.parent().par.Cameraintensity = par
 		me.parent().par.Environmentintensity = par
-	if par.name == 'Trackingmarkers':
+	elif par.name == 'Trackingmarkers':
 		op.Volume.TrackingMarkers(par)
+	elif par.name == 'Rendercamera':
+		op.tDisplay.RenderCamera(par)
+	elif par.name == 'Rendermode':
+		op.Volume.Mode(par)
 	else:
 		pass
 

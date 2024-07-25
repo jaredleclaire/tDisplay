@@ -30,6 +30,8 @@ def onValueChange(par, prev):
 		parent.Volume.SetScreenspaceOpacity(par.eval())
 	elif par.name == 'Screenspacepriority':
 		parent.Volume.SetScreenspacePriority(par.eval())
+	elif par.name == 'Rendermode':
+		parent.Volume.Mode(par)
 	else:
 		pass
 

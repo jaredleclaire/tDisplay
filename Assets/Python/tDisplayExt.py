@@ -43,3 +43,11 @@ class tDisplayExt:
 
 	def PromotedFunction(self, v):
 		debug(v)
+		
+	def RenderCamera(self, state):
+		op.Camera.display = state
+		op.Camera.allowCooking = state
+		op('null_cameraParent').display = state
+		
+	def RenderMode(self, mode):
+		op.Volume.Mode(mode)

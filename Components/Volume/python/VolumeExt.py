@@ -55,6 +55,7 @@ class Volume:
 	
 	def Reinit(self):
 		op('base_recreateScreens').par.Recreateallscreens.pulse()
+		#op.Screen_Template.allowCooking = False
 		print('volume re-initialized')
 		
 	def SetScreenspacePriority(self, mode):
@@ -73,4 +74,9 @@ class Volume:
 		children = parent.Volume.findChildren(name='Screen*',depth=1)
 		for c in children:
 			c.DebugOverlay(state)
+		
+	def Mode(self, mode):
+		children = parent.Volume.findChildren(name='Screen*',depth=1)
+		for c in children:
+			c.Mode(mode)
 

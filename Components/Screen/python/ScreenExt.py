@@ -166,3 +166,13 @@ class Screen:
 		
 	def SetScreenspaceOpacity(self, opacity):
 		parent.Screen.par.Screenspaceopacity = opacity
+		
+	def Mode(self, mode):
+		if mode == '3D':
+			op('level_inner').par.opacity = 1
+			op('geo_projection').par.material = 'glsl_innerProj'
+		if mode == '360':
+			op('level_inner').par.opacity = 0
+			op('geo_projection').par.material = 'constant_360'
+		
+		return
