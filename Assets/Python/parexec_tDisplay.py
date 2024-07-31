@@ -22,6 +22,11 @@ def onValueChange(par, prev):
 		op.tDisplay.RenderCamera(par)
 	elif par.name == 'Rendermode':
 		op.Volume.Mode(par)
+	elif par.name == 'Stype':
+		if par == 0:
+			parent.tDisplay.StypeDisable()
+		elif par == 1:
+			parent.tDisplay.StypeInit()
 	else:
 		pass
 
