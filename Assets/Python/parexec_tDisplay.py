@@ -20,7 +20,7 @@ def onValueChange(par, prev):
 		op.Volume.TrackingMarkers(par)
 	elif par.name == 'Rendercamera':
 		op.tDisplay.RenderCamera(par)
-	elif par.name == 'Rendermode':
+	elif par.name == 'Volumerendermode':
 		op.Volume.Mode(par)
 	elif par.name == 'Stype':
 		if par == 0:
@@ -49,6 +49,8 @@ def onPulse(par):
 		me.parent().par.Globalintensity = 0
 		me.parent().par.Cameratmireset.pulse()
 		me.parent().par.Environmenttmireset.pulse()
+	elif par.name == 'Stypereinit':
+		parent.tDisplay.StypeInit()
 	else:
 		pass
 	return

@@ -72,7 +72,7 @@ class Screen:
 
 		m = tdu.Matrix()
 
-		# default projection matrix parameters
+		#default projection matrix parameters
 		cam = op('cam_outer')
 		render = op('render_outerPerspective')
 		fovX = cam.par.fov
@@ -81,20 +81,20 @@ class Screen:
 		near = cam.par.near
 		far = cam.par.far
 		
-		# crop values
+		#crop values
 		cropLeft = op('null_crop')['left']
 		cropRight = op('null_crop')['right']
 		cropBottom =op('null_crop')['bottom']
 		cropTop = op('null_crop')['top']
 		
-		# re-scale factor calc
+		#re-scale factor calc
 		scaleX = 1 / (cropRight - cropLeft)
 		scaleY = 1 / (cropTop - cropBottom)
 		
-		# convert original matrix to projection matrix with default pars
+		#convert original matrix to projection matrix with default pars
 		m.projectionFovX(fovX, aspectX, aspectY, near, far)
 		
-		# crop to bounding box
+		#crop to bounding box
 			
 		m.scale(0.5,0.5,1.0)
 			
@@ -167,6 +167,7 @@ class Screen:
 	def SetScreenspaceOpacity(self, opacity):
 		parent.Screen.par.Screenspaceopacity = opacity
 		
+	#sets render mode for the screen object. will be deprecated soon
 	def Mode(self, mode):
 		if mode == '3D':
 			op('level_inner').par.opacity = 1
@@ -174,5 +175,33 @@ class Screen:
 		if mode == '360':
 			op('level_inner').par.opacity = 0
 			op('geo_projection').par.material = 'constant_360'
+		
+		return
+		
+	#sets screen space canvas crop crop settings based on config values and relevant resolution multipliers
+	def SetCanvas(self):
+		
+		#canvas mapping as specified by Volume Config
+		canvas_mapping_x = parent.Screen.par.Canvasmappingx
+		canvas_mapping_y = parent.Screen.par.Canvasmappingy
+		
+		#screen native resolution
+		screen_res_w = parent.Screen.par.Screenresolutionw
+		screen_res_h = parent.Screen.par.Screenresolutionh
+		
+		#screen render resolution multiplier
+		screen_res_mult = parent.Screen.par.Resolutionmultiplier
+		
+		#project global resolution multiplier
+		global_res_mult = [0.25, 0.5, 1, 2][ui.preferences['tops.globalresize']]
+		
+		#set crop values
+		op('crop_canvas').par.cropleft = canvas_mapping_x * screen_res_mult * global_res_mult
+		op('crop_canvas').par.cropright = ( screen_res_w + canvas_mapping_x ) * screen_res_mult * global_res_mult
+		op('crop_canvas').par.cropbottom = canvas_mapping_y * screen_res_mult * global_res_mult
+		op('crop_canvas').par.croptop = ( screen_res_h + canvas_mapping_y ) * screen_res_mult * global_res_mult
+		
+		#print to console
+		print(parent.Screen.name + ' canvas set')
 		
 		return
