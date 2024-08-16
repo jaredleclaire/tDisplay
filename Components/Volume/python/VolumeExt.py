@@ -79,4 +79,9 @@ class Volume:
 		children = parent.Volume.findChildren(name='Screen*',depth=1)
 		for c in children:
 			c.Mode(mode)
+	
+	def SetCanvas(self):
+		children = parent.Volume.findChildren(name='Screen*',depth=1)
+		for c in children:
+			c.SetCanvas()
 

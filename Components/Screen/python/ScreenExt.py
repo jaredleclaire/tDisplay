@@ -181,19 +181,27 @@ class Screen:
 	#sets screen space canvas crop crop settings based on config values and relevant resolution multipliers
 	def SetCanvas(self):
 		
-		#canvas mapping as specified by Volume Config
+		#get canvas mapping from Volume Config
 		canvas_mapping_x = parent.Screen.par.Canvasmappingx
 		canvas_mapping_y = parent.Screen.par.Canvasmappingy
 		
-		#screen native resolution
+		#get canvas resolution
+		canvas_res_w = op('select_canvas').width
+		canvas_res_h = op('select_canvas').height
+		
+		#get screen native resolution
 		screen_res_w = parent.Screen.par.Screenresolutionw
 		screen_res_h = parent.Screen.par.Screenresolutionh
 		
-		#screen render resolution multiplier
+		#get screen render resolution multiplier
 		screen_res_mult = parent.Screen.par.Resolutionmultiplier
 		
-		#project global resolution multiplier
+		#get project global resolution multiplier
 		global_res_mult = [0.25, 0.5, 1, 2][ui.preferences['tops.globalresize']]
+		
+		#normalize screen resolution based on multipliers
+		norm_res_w = screen_res_w * global_res_mult * screen_res_mult
+		norm_res_h = screen_res_h * global_res_mult * screen_res_mult
 		
 		#set crop values
 		op('crop_canvas').par.cropleft = canvas_mapping_x * screen_res_mult * global_res_mult
@@ -205,3 +213,9 @@ class Screen:
 		print(parent.Screen.name + ' canvas set')
 		
 		return
+		
+	#sets screen resolution based on native display res and relevant resolution multipliers
+	def SetResolution(self):
+		
+		#print to console
+		print(parent.Screen.name + ' resolution set')
