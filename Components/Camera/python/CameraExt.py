@@ -29,6 +29,9 @@ class Camera:
 		op('switch_DoF').par.index = 0
 		print('depth of field disabled')
 
+	def Bloom(self, state):
+		op('bloom_camera').bypass = not state
+
 	def FOVtoThrow(self, fov):
 		#incomplete
 		import math

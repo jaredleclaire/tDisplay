@@ -21,6 +21,10 @@ def onValueChange(par, prev):
             parent.Camera.EnableDoF()
     elif par.name == 'Frustum':
         parent.Camera.Frustum(par.eval())
+    elif par.name == 'Bloom':
+        parent.Camera.Bloom(par.eval())
+    else:
+        pass
 
     return
 
