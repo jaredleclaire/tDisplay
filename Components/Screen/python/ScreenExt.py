@@ -214,8 +214,3 @@ class Screen:
 		
 		return
 		
-	#sets screen resolution based on native display res and relevant resolution multipliers
-	def SetResolution(self):
-		
-		#print to console
-		print(parent.Screen.name + ' resolution set')
