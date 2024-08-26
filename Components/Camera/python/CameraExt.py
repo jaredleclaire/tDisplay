@@ -19,15 +19,13 @@ class Camera:
 	def Frustum(self, state):
 		op('FrustumVisualizer').display = state
 
-	def EnableDoF(self):
-		op('Swaggy_Bokeh_v1_0').allowCooking = True
-		op('switch_DoF').par.index = 1
-		print('depth of field enabled')
-
-	def DisableDoF(self):
-		op('Swaggy_Bokeh_v1_0').allowCooking = False
-		op('switch_DoF').par.index = 0
-		print('depth of field disabled')
+	def DoF(self, state):
+		op('Swaggy_Bokeh_v1_0').allowCooking = state
+		op('switch_DoF').par.index = state
+		if state:
+			debug('depth of field enabled')
+		else:
+			debug('depth of field disabled')
 
 	def Bloom(self, state):
 		op('bloom_camera').bypass = not state

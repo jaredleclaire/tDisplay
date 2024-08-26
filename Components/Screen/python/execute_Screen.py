@@ -16,7 +16,7 @@ def onExit():
 
 def onFrameStart(frame):
 	
-	me.parent().UpdateProjMatrix()
+	parent().UpdateProjMatrix()
 	
 	return
 

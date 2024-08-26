@@ -15,10 +15,7 @@ def onValueChange(par, prev):
     elif par.name == 'Keyingscreen':
         parent.Camera.KeyingScreen(par.eval())
     elif par.name == 'Depthoffield':
-        if par.eval() == False:
-            parent.Camera.DisableDoF()
-        else:
-            parent.Camera.EnableDoF()
+        parent.Camera.DoF(par.eval())
     elif par.name == 'Frustum':
         parent.Camera.Frustum(par.eval())
     elif par.name == 'Bloom':

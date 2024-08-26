@@ -1,13 +1,3 @@
-"""
-Extension classes enhance TouchDesigner components with python. An
-extension is accessed via ext.ExtensionClassName from any operator
-within the extended component. If the extension is promoted via its
-Promote Extension parameter, all its attributes with capitalized names
-can be accessed externally, e.g. op('yourComp').PromotedFunction().
-
-Help: search "Extensions" in wiki
-"""
-
 from TDStoreTools import StorageManager
 import TDFunctions as TDF
 
@@ -19,40 +9,14 @@ class Screen:
 		# The component to which this extension is attached
 		self.ownerComp = ownerComp
 
-		# properties
-		TDF.createProperty(self, 'MyProperty', value=0, dependable=True,
-						   readOnly=False)
-
-		# attributes:
-		self.a = 0 # attribute
-		self.B = 1 # promoted attribute
-
-		# stored items (persistent across saves and re-initialization):
-		storedItems = [
-			# Only 'name' is required...
-			{'name': 'StoredProperty', 'default': None, 'readOnly': False,
-			 						'property': True, 'dependable': True},
-		]
-		# Uncomment the line below to store StoredProperty. To clear stored
-		# 	items, use the Storage section of the Component Editor
-		
-		# self.stored = StorageManager(self, ownerComp, storedItems)
-
-	def myFunction(self, v):
-		debug(v)
-
-	def DebugOverlay(self, state):
-		
+	def DebugOverlay(self, state):		
 		op('base_debugOverlay').par.Enable = state
-		
-		#debug(state)
-		
-	def TrackingMarkers(self, state ):
-		
+		# debug(state)
+
+	def TrackingMarkers(self, state):
 		op('level_markerOpacity').par.opacity = state
-		
-		#debug(state)
-  
+		# debug(state)
+
 	def BoundingBox(self, state):
 
 		op('null_boundsPoint0').display = state
@@ -67,9 +31,8 @@ class Screen:
 		op('null_boundingBox').display = state
 
 		#debug(state)
-  
-	def UpdateProjMatrix(self):
 
+	def UpdateProjMatrix(self):
 		m = tdu.Matrix()
 
 		#default projection matrix parameters
@@ -113,9 +76,7 @@ class Screen:
 		#debug(v)
 		
 	def SetDefaultColor(self):
-		
 		num = parent.Screen.digits % 10
-		print(num)
 	
 		r = eval('op.Colors.par.Color' + str(num) + 'r')
 		g = eval('op.Colors.par.Color' + str(num) + 'g')
@@ -132,23 +93,18 @@ class Screen:
 		#debug()
 	
 	def Wireframe(self, state):
-		op('geo_wireframe').render = state
-		
-		if state == True:
+		op('geo_wireframe').render = state		
+		if state:
 			print(parent.Screen.name + ' wireframe enabled')
-		elif state == False:
-			print(parent.Screen.name + ' wireframe disabled')
 		else:
-			pass
-		
+			print(parent.Screen.name + ' wireframe disabled')
+
 	def Frustum(self, state):
 		op('FrustumVisualizer').display = state
-		if state == True:
+		if state:
 			print(parent.Screen.name + ' frustum enabled')
-		elif state == False:
-			print(parent.Screen.name + ' frustum disabled')
 		else:
-			pass
+			print(parent.Screen.name + ' frustum disabled')
 		
 	def SetScreenspacePriority(self, mode):
 		if mode == 'middle':
@@ -159,8 +115,6 @@ class Screen:
 			op('select_layer1').par.top = 'out_canvas'
 			op('select_layer2').par.top = 'out_inner'
 			op('select_layer3').par.top = 'out_outer'
-		else:
-			pass
 			
 		print(parent.Screen.name + ' screenspace priority set to ' + mode)
 		

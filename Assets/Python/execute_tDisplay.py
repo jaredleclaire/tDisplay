@@ -6,9 +6,8 @@
 # Make sure the corresponding toggle is enabled in the Execute DAT.
 
 def onStart():
-	
 	op.Volume.Reinit()
-	op.Volume.SetCanvas()
+	# op.Volume.SetCanvas()
 	
 	return
 

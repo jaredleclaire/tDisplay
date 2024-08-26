@@ -7,68 +7,21 @@
 
 def onValueChange(par, prev):
 	# use par.eval() to get current value
-	
 	if par.name == 'Wireframe':
-		if par.eval() == True:
-			parent.Screen.Wireframe(True)
-		elif par.eval() == False:
-			parent.Screen.Wireframe(False)
+			parent.Screen.Wireframe(par.eval())
 	elif par.name == 'Frustum':
-		if par.eval() == True:
-			parent.Screen.Frustum(True)
-		elif par.eval() == False:
-			parent.Screen.Frustum(False)
+		parent.Screen.Frustum(par.eval())
 	elif par.name == 'Screenspaceopacity':
 		parent.Screen.SetScreenspaceOpacity(par.eval())
 	elif par.name == 'Screenspacepriority':
 		parent.Screen.SetScreenspacePriority(par.eval())
 	elif par.name == 'Rendermode':
-		parent.Screen.Mode(par)\
-	#colorGrade
-	##TMI
-	elif par.name == 'Temperature':
-		op('colorGrade').par.Temperature = par
-	elif par.name == 'Magenta':
-		op('colorGrade').par.Magenta = par
-	elif par.name == 'Intensity':
-		op('colorGrade').par.Intensity = par
-	##LGG
-	elif par.name == 'Liftcolorr':
-		op('colorGrade').par.Liftcolorr = par
-	elif par.name == 'Liftcolorg':
-		op('colorGrade').par.Liftcolorg = par
-	elif par.name == 'Liftcolorb':
-		op('colorGrade').par.Liftcolorb = par
-	elif par.name == 'Liftlevel':
-		op('colorGrade').par.Liftlevel = par
-	elif par.name == 'Gammacolorr':
-		op('colorGrade').par.Gammacolorr = par
-	elif par.name == 'Gammacolorg':
-		op('colorGrade').par.Gammacolorg = par
-	elif par.name == 'Gammacolorb':
-		op('colorGrade').par.Gammacolorb = par
-	elif par.name == 'Gammalevel':
-		op('colorGrade').par.Gammalevel = par
-	elif par.name == 'Gaincolorr':
-		op('colorGrade').par.Gaincolorr = par
-	elif par.name == 'Gaincolorg':
-		op('colorGrade').par.Gaincolorg = par
-	elif par.name == 'Gaincolorb':
-		op('colorGrade').par.Gaincolorb = par
-	elif par.name == 'Gainlevel':
-		op('colorGrade').par.Gainlevel = par
-	elif par.name == 'Offsetcolorr':
-		op('colorGrade').par.Offsetcolorr = par
-	elif par.name == 'Offsetcolorg':
-		op('colorGrade').par.Offsetcolorg = par
-	elif par.name == 'Offsetcolorb':
-		op('colorGrade').par.Offsetcolorb = par
-	elif par.name == 'Offsetlevel':
-		op('colorGrade').par.Offsetlevel = par
-	##saturation
-	elif par.name == 'Saturation':
-		op('colorGrade').par.Saturation = par
-		
+		parent.Screen.Mode(par)
+	elif par.page.name == "Color Grade":
+		try:
+			op("colorGrade").par[par.name] = par.eval()
+		except Exception as e:
+			debug(e)
 	return
 
 # Called at end of frame with complete list of individual parameter changes.
@@ -81,7 +34,6 @@ def onValuesChanged(changes):
 	return
 
 def onPulse(par):
-	
 	#colorGrade
 	if par.name == 'Resettmi':
 		op('colorGrade').par.Resettmi.pulse()
@@ -126,10 +78,6 @@ def onPulse(par):
 		
 		##saturation
 		parent.Screen.par.Saturation = 1
-	else:
-		pass
-		
-		return
 		
 	return
 
