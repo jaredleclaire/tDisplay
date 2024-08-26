@@ -36,7 +36,7 @@ class Screen:
 		m = tdu.Matrix()
 
 		#default projection matrix parameters
-		cam = op('cam_outer')
+		cam = op('cam_outer_reference')
 		render = op('render_outerPerspective')
 		fovX = cam.par.fov
 		aspectX = render.par.resolutionw
@@ -45,10 +45,16 @@ class Screen:
 		far = cam.par.far
 		
 		#crop values
+		'''
 		cropLeft = op('null_crop')['left']
 		cropRight = op('null_crop')['right']
 		cropBottom =op('null_crop')['bottom']
 		cropTop = op('null_crop')['top']
+		'''
+		cropLeft = op('geo_dynamicFrustum').par.Minimumsx
+		cropRight = op('geo_dynamicFrustum').par.Maximumsx
+		cropBottom = op('geo_dynamicFrustum').par.Minimumsy
+		cropTop = op('geo_dynamicFrustum').par.Maximumsy
 		
 		#re-scale factor calc
 		scaleX = 1 / (cropRight - cropLeft)

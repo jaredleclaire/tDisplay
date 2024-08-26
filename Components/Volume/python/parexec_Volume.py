@@ -79,6 +79,10 @@ def onPulse(par):
 		
 		## saturation
 		parent.Volume.par.Saturation = 1
+	elif par.name == 'EnvironmentResolution':
+		w = parent.Volume.par.Environmentresolutionw
+		h = parent.Volume.par.Environmentresolutionh
+		parent.Volume.SetEnvResolution(w,h)
 	
 	return
 

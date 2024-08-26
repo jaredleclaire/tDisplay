@@ -46,3 +46,8 @@ class Volume:
 	def SetCanvas(self):
 		for screen in self.screens:
 			screen.SetCanvas()
+			
+	def SetEnvResolution(self, width, height):
+		for screen in self.screens:
+			screen.par.Environmentresolutionw = width
+			screen.par.Environmentresolutionh = height
